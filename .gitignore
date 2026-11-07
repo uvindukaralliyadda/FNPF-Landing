@@ -1,6 +1,14 @@
+# dependencies
 node_modules
+.npm-cache
+
+# next.js
 .next
 out
+next-env.d.ts
+
+# misc
 *.tsbuildinfo
 .env*.local
 .DS_Store
+.vercel
