@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { CORPORATE, EMAIL, PHONE, type NavItem } from "@/lib/site";
-import { Icon } from "./Icon";
+import { Icon } from "@/components/Icon";
 
 type Action = { label: string; href: string; variant: "accent" | "outline"; hideOnTablet?: boolean };
 

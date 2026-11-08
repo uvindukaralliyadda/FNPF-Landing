@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { EMAIL, PHONE } from "@/lib/site";
-import { Icon } from "./Icon";
-import { StoreButtons } from "./StoreButtons";
+import { Icon } from "@/components/Icon";
+import { StoreButtons } from "@/components/StoreButtons";
 
 type Kind = "new" | "members";
 

@@ -1,5 +1,5 @@
 import { APP_STORE, GOOGLE_PLAY } from "@/lib/site";
-import { AppleLogo, PlayLogo } from "./Icon";
+import { AppleLogo, PlayLogo } from "@/components/Icon";
 
 /** App Store and Google Play buttons. `tone="light"` for dark backgrounds. */
 export function StoreButtons({ tone = "dark", className = "" }: { tone?: "dark" | "light"; className?: string }) {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Icon } from "./Icon";
+import { Icon } from "@/components/Icon";
 
 /** Card with a photo on top, used for retirement options and news. */
 export function ImageCard({
@@ -8,6 +8,7 @@ export function ImageCard({
   meta,
   title,
   text,
+  facts,
   linkLabel = "Learn more",
   href = "#",
 }: {
@@ -16,6 +17,8 @@ export function ImageCard({
   meta: string;
   title: string;
   text?: string;
+  /** Short key facts shown as a checklist under the text. */
+  facts?: string[];
   linkLabel?: string;
   href?: string;
 }) {
@@ -36,8 +39,20 @@ export function ImageCard({
       <div className="flex flex-1 flex-col p-6">
         <span className="text-xs font-semibold tracking-[0.04em] text-accent">{meta}</span>
         <h3 className="mt-1.5 text-xl font-semibold leading-snug tracking-[-0.015em] text-primary">{title}</h3>
-        {text && <p className="mt-2 flex-1 text-base text-muted-fg">{text}</p>}
-        <span className="mt-3 inline-flex min-h-11 items-center gap-1 text-sm font-semibold tracking-[0.01em] text-accent">
+        {text && <p className="mt-2 text-base text-muted-fg">{text}</p>}
+        {facts && facts.length > 0 && (
+          <ul className="mt-4 grid gap-2 border-t border-line pt-4">
+            {facts.map((f) => (
+              <li key={f} className="flex items-start gap-2.5 text-sm leading-snug text-secondary">
+                <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M5 12.5l4.5 4.5L19 7.5" />
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+        )}
+        <span className="mt-auto inline-flex min-h-11 items-center gap-1 pt-3 text-sm font-semibold tracking-[0.01em] text-accent">
           {linkLabel}
           <Icon name="chevronRight" className="h-[18px] w-[18px] transition duration-200 group-hover:translate-x-1" />
         </span>

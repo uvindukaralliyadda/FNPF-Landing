@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Icon } from "./Icon";
+import { Icon } from "@/components/Icon";
 
 export type Slide = {
   image: string;

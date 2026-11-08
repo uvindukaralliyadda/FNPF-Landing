@@ -1,4 +1,4 @@
-import { Icon, type IconName } from "./Icon";
+import { Icon, type IconName } from "@/components/Icon";
 
 /** Quick-action card used under the hero slider. */
 export function CtaTile({ icon, title, text, href }: { icon: IconName; title: string; text: string; href: string }) {

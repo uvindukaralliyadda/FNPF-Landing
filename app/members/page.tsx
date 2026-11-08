@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   description: "Check your balance, apply for withdrawals, update your nominee and plan your retirement with FNPF.",
 };
 
+const FNPF = "https://myfnpf.com.fj";
+
 const slides: Slide[] = [
   {
     image: "/images/hero1.webp",
@@ -31,14 +33,14 @@ const slides: Slide[] = [
     position: "50% 35%",
     title: "Education support for your family",
     text: "Local applications processed in 3 working days.",
-    ctas: [{ label: "Apply for education", href: "#", variant: "accent" }],
+    ctas: [{ label: "Apply for education", href: `${FNPF}/early-partial-withdrawal/`, variant: "accent" }],
   },
   {
     image: "/images/hero3.webp",
     position: "50% 40%",
     title: "Build or buy your home",
     text: "Use your savings for land, a house or a home loan.",
-    ctas: [{ label: "Housing withdrawals", href: "#", variant: "accent" }],
+    ctas: [{ label: "Housing withdrawals", href: `${FNPF}/early-partial-withdrawal/`, variant: "accent" }],
   },
   {
     image: "/images/hero4.webp",
@@ -49,17 +51,66 @@ const slides: Slide[] = [
   },
 ];
 
+/* Retirement options — facts from myfnpf.com.fj (Life Pension, Term Annuity, DrawDown Account pages) */
 const retirement = [
-  { image: unsplash("photo-1758691031787-90867cb6fb2c", 900), alt: "An older couple smiling on a couch", meta: "Monthly, for life", title: "Life pension", text: "A steady income for the rest of your life." },
-  { image: unsplash("photo-1763573676689-bf2d7b474208", 900), alt: "An older couple laughing together indoors", meta: "5, 10 or 15 years", title: "Term annuity", text: "Fixed monthly payments for a term you choose." },
-  { image: unsplash("photo-1758691031818-02a1e7d90aff", 900), alt: "An older couple sitting together on a couch", meta: "While funds last", title: "DrawDown account", text: "A flexible monthly income from your savings." },
+  {
+    image: unsplash("photo-1758691031787-90867cb6fb2c", 900),
+    alt: "An older couple smiling on a couch",
+    meta: "Monthly, for life",
+    title: "Life pension",
+    text: "A monthly income for life, for you alone or jointly with your spouse.",
+    facts: ["Guaranteed for the first 5 years", "Higher payments the older you start", "Tax-free, no administration fee"],
+    href: `${FNPF}/life-pension/`,
+  },
+  {
+    image: unsplash("photo-1763573676689-bf2d7b474208", 900),
+    alt: "An older couple laughing together indoors",
+    meta: "Monthly, for 5, 10 or 15 years",
+    title: "Term annuity",
+    text: "A fixed monthly payment for the term you choose.",
+    facts: ["Rate set by the term, not your age", "Payment never changes once bought", "Remaining payments go to your nominee"],
+    href: `${FNPF}/term-annuity/`,
+  },
+  {
+    image: unsplash("photo-1758691031818-02a1e7d90aff", 900),
+    alt: "An older couple sitting together on a couch",
+    meta: "Monthly, while funds last",
+    title: "DrawDown account",
+    text: "A flexible monthly income from savings that keep earning interest.",
+    facts: ["Standard or High payment plan", "Minimum $50 a month", "Partial withdrawal once a year"],
+    href: `${FNPF}/drawdown-account/`,
+  },
 ];
 
-const news = [
-  { image: unsplash("photo-1655719647300-5142977bfa79", 900), alt: "A Fiji beach with blue water and green land", meta: "30 October 2026", title: "JW Marriott Fiji Resort & Spa development strengthens member value" },
-  { image: unsplash("photo-1579264670959-286d7b06f1ae", 900), alt: "Homes among trees in Fiji", meta: "10 October 2026", title: "Protecting members' retirement savings requires full information" },
-  { image: unsplash("photo-1594068049109-675b51ac3c06", 900), alt: "Aerial view of green trees by the water in Fiji", meta: "4 September 2026", title: "Legacy Contribution Debt Amnesty Campaign speaking notes" },
+/* Before applying — from myfnpf.com.fj/plan-your-retirement */
+const checklist = [
+  "Confirm your birth details with FNPF",
+  "Check your employer has paid all contributions",
+  "Have your birth certificate, bank statement and photo ID ready",
+  "Complete the FW01 Retirement Application Form",
 ];
+
+/* Latest media releases — titles and dates from myfnpf.com.fj/latest-news */
+const featured = {
+  title: "FNPF Strengthens Long-Term Member Value Through Landmark JW Marriott Fiji Resort & Spa Development",
+  date: "30 October 2026",
+  dateTime: "2026-10-30",
+  href: `${FNPF}/2026/10/30/fnpf-strengthens-long-term-member-value-through-landmark-jw-marriott-fiji-resort-spa-development/`,
+  image: unsplash("photo-1655719647300-5142977bfa79", 1400),
+  alt: "A Fiji beach with blue water and green land",
+};
+
+const news = [
+  { title: "Protecting Members' Retirement Savings Requires Full Information", date: "10 October 2026", dateTime: "2026-10-10", type: "Media release", href: `${FNPF}/2026/10/10/protecting-members-retirement-savings-requires-full-information/` },
+  { title: "Media Conference: Legacy Contribution Debt Amnesty Campaign Speaking Notes", date: "4 September 2026", dateTime: "2026-09-04", type: "Media release", href: `${FNPF}/2026/09/04/media-conference-legacy-contribution-debt-amnesty-campaign-speaking-notes/` },
+  { title: "FNPF Reaches 60-Year Milestone", date: "4 August 2026", dateTime: "2026-08-04", type: "Media release", href: `${FNPF}/2026/08/04/fnpf-reaches-60-year-milestone/` },
+  { title: "FNPF Declares Strong Returns For Members", date: "26 June 2026", dateTime: "2026-06-26", type: "Media release", href: `${FNPF}/2026/06/26/fnpf-declares-strong-returns-for-members/` },
+  { title: "Voluntary Member Champions FNPF To All", date: "22 June 2026", dateTime: "2026-06-22", type: "Member story", href: `${FNPF}/2026/06/22/article-15-26-voluntary-member-champions-fnpf-to-all/` },
+];
+
+/* Shared spacing */
+const SECTION = "py-14 md:py-16 lg:py-20";
+const HEAD_ROW = "mb-8 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end lg:mb-10";
 
 export default function MembersPage() {
   return (
@@ -84,85 +135,145 @@ export default function MembersPage() {
         {/* Quick tasks */}
         <section id="tasks" aria-label="Quick tasks" className="relative z-10 -mt-24 md:-mt-[88px]">
           <div className="wrap">
-            <div data-anim="tiles" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div data-anim="tiles" className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               <CtaTile icon="wallet" title="Check my balance" text="App, portal or *567#" href={PORTAL} />
               <CtaTile icon="file" title="Download a statement" text="App or online portal" href={PORTAL} />
-              <CtaTile icon="send" title="Apply for a withdrawal" text="Education, medical, housing and more" href="#" />
+              <CtaTile icon="send" title="Apply for a withdrawal" text="Education, medical, housing and more" href={`${FNPF}/early-partial-withdrawal/`} />
               <CtaTile icon="search" title="Track my application" text="See your application status" href={PORTAL} />
-              <CtaTile icon="users" title="Update my nominee" text="Protect your family" href={PORTAL} />
-              <CtaTile icon="plus" title="Make a contribution" text="App, M-PAiSA or bank" href="#" />
+              <CtaTile icon="users" title="Update my nominee" text="Protect your family" href={`${FNPF}/nomination/`} />
+              <CtaTile icon="plus" title="Make a contribution" text="App, M-PAiSA or bank" href={`${FNPF}/grow-your-savings/`} />
             </div>
           </div>
         </section>
 
         {/* Intro: image + numbers */}
-        <section id="about" className="py-20 lg:py-28">
-          <div className="wrap grid items-center gap-12 lg:grid-cols-2 lg:gap-[72px]">
-            <div className="relative">
-              <div data-anim="frame" className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-muted lg:aspect-[4/5]">
-                <Image
-                  src={unsplash("photo-1700631102725-7194689f7075", 1200)}
-                  alt="Two young Fijian men in the Serua highlands"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 560px"
-                  className="object-cover"
-                />
-              </div>
-              <div data-anim="badge" className="absolute bottom-4 right-4 flex max-w-[260px] items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-lift lg:-right-6 lg:bottom-10">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent text-white">
-                  <Icon name="phone" />
-                </span>
-                <b className="text-sm font-semibold leading-snug text-primary">Apply and track withdrawals in the app</b>
-              </div>
+        <section id="about" className={SECTION}>
+          <div className="wrap grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+            <div data-anim="frame" className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-muted lg:aspect-[4/5]">
+              <Image
+                src={unsplash("photo-1700631102725-7194689f7075", 1200)}
+                alt="Two young Fijian men in the Serua highlands"
+                fill
+                sizes="(max-width: 1024px) 100vw, 560px"
+                className="object-cover"
+              />
             </div>
 
             <div data-anim="reveal">
               <h2 className="h-section">Your savings are working for you</h2>
-              <p className="mt-4 max-w-[46ch] text-lg leading-[1.7] text-muted-fg">
-                Your contributions earn interest every year, with no fees or taxes. Use them for life&apos;s big moments.
+              <p className="mt-3 max-w-[46ch] text-lg leading-[1.65] text-muted-fg">
+                Your contributions earn interest every year, with no fees or taxes.
               </p>
-              <div data-anim="stats" className="mt-10 grid grid-cols-2 gap-3 sm:gap-4">
+              <div data-anim="stats" className="mt-6 grid grid-cols-2 gap-3 lg:mt-8">
                 <StatCard value={6} suffix="%" label="average interest over the last 3 years" />
                 <StatCard value={0} prefix="$" label="in fees or taxes on your savings" />
                 <StatCard value={3} label="working days for local education and funeral claims" />
                 <StatCard value={2000} prefix="$" label="funeral support per family member" />
               </div>
-              <a href="#" className="btn btn-accent mt-8">See all withdrawal types</a>
+              <a href={`${FNPF}/early-partial-withdrawal/`} className="btn btn-accent mt-6 lg:mt-8">See all withdrawal types</a>
             </div>
           </div>
         </section>
 
         {/* Retirement */}
-        <section id="retire" className="bg-white py-20 lg:py-28">
+        <section id="retire" className={`bg-white ${SECTION}`}>
           <div className="wrap">
-            <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div className={HEAD_ROW}>
               <div data-anim="reveal" className="max-w-[620px]">
                 <h2 className="h-section">Ready to retire?</h2>
-                <p className="mt-3 text-lg text-muted-fg">Turn your savings into a monthly income.</p>
+                <p className="mt-3 text-lg text-muted-fg">
+                  From age 55, take your savings as a monthly income, a lump sum, or both.
+                </p>
               </div>
-              <a data-anim="slide-in" href="#" className="btn btn-outline">Plan your retirement</a>
+              <div data-anim="slide-in" className="flex flex-wrap gap-3">
+                <a href="https://pension-calculator.myfnpf.com.fj/" className="btn btn-accent">Estimate your pension</a>
+                <a href={`${FNPF}/plan-your-retirement/`} className="btn btn-outline">Plan your retirement</a>
+              </div>
             </div>
-            <div data-anim="cards" className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            <div data-anim="cards" className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {retirement.map((r) => (
                 <ImageCard key={r.title} {...r} />
               ))}
+            </div>
+
+            {/* Before you apply */}
+            <div data-anim="reveal" className="mt-5 grid gap-6 rounded-3xl bg-surface p-5 sm:p-6 lg:grid-cols-[1fr_1.6fr] lg:items-center lg:p-8">
+              <div>
+                <h3 className="text-xl font-semibold tracking-[-0.015em] text-primary lg:text-2xl">Before you apply</h3>
+                <p className="mt-1.5 text-base text-muted-fg">Lump sums are paid within 3 working days of a complete application.</p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a href={`${FNPF}/wp-content/uploads/2019/09/FW01.pdf`} className="btn btn-accent">
+                    <Icon name="download" className="h-5 w-5" />
+                    FW01 form
+                  </a>
+                  <a href={`${FNPF}/wp-content/uploads/2019/09/Pension-Booklet-1.pdf`} className="btn btn-outline">Pension booklet</a>
+                </div>
+              </div>
+              <ol className="grid gap-3 sm:grid-cols-2">
+                {checklist.map((item, i) => (
+                  <li key={item} className="flex items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3.5">
+                    <span aria-hidden="true" className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent-tint text-sm font-semibold text-accent tabular-nums">
+                      {i + 1}
+                    </span>
+                    <span className="text-sm leading-snug text-secondary">{item}</span>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </section>
 
         {/* News */}
-        <section id="news" className="py-20 lg:py-28">
+        <section id="news" className={SECTION}>
           <div className="wrap">
-            <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-              <div data-anim="reveal">
-                <h2 className="h-section">Member news</h2>
-              </div>
-              <a data-anim="slide-in" href="#" className="btn btn-outline">All news</a>
+            <div className={HEAD_ROW}>
+              <h2 data-anim="reveal" className="h-section">Member news</h2>
+              <a data-anim="slide-in" href={`${FNPF}/latest-news/`} className="btn btn-outline">All news</a>
             </div>
-            <div data-anim="cards" className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {news.map((n) => (
-                <ImageCard key={n.title} {...n} linkLabel="Read more" />
-              ))}
+
+            <div data-anim="cards" className="grid gap-5 lg:grid-cols-[1.35fr_1fr]">
+              {/* Featured story */}
+              <a
+                href={featured.href}
+                className="group relative isolate flex min-h-[340px] flex-col justify-end overflow-hidden rounded-3xl p-6 text-white no-underline sm:p-8 lg:min-h-[440px]"
+              >
+                <Image
+                  src={featured.image}
+                  alt={featured.alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 700px"
+                  className="-z-20 bg-slate-800 object-cover transition duration-700 ease-out group-hover:scale-105"
+                />
+                <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0)_30%,rgba(0,0,0,.75)_100%)]" />
+                <p className="text-sm font-medium text-white/80">
+                  Media release, <time dateTime={featured.dateTime}>{featured.date}</time>
+                </p>
+                <h3 className="mt-2 max-w-[30ch] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] lg:text-[1.75rem]">
+                  {featured.title}
+                </h3>
+                <span className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-semibold">
+                  Read the release
+                  <Icon name="chevronRight" className="h-[18px] w-[18px] transition duration-200 group-hover:translate-x-1" />
+                </span>
+              </a>
+
+              {/* Latest headlines */}
+              <ul className="flex flex-col divide-y divide-line overflow-hidden rounded-3xl border border-line bg-white">
+                {news.map((n) => (
+                  <li key={n.href} className="flex-1">
+                    <a href={n.href} className="group flex h-full items-center gap-4 px-5 py-4 no-underline transition-colors hover:bg-surface">
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-xs font-medium text-muted-fg">
+                          <span className="font-semibold text-accent">{n.type}</span>, <time dateTime={n.dateTime}>{n.date}</time>
+                        </span>
+                        <span className="mt-1 block text-base font-semibold leading-snug text-primary">{n.title}</span>
+                      </span>
+                      <Icon name="chevronRight" className="h-[18px] w-[18px] text-muted-fg transition duration-200 group-hover:translate-x-1 group-hover:text-accent" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
