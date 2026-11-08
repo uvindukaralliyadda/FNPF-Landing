@@ -151,14 +151,14 @@ export default function MembersPage() {
         <section id="about" className={SECTION}>
           <div className="wrap grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
             <div data-anim="frame" className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-muted lg:aspect-[4/5]">
-              <Image
-                src={unsplash("photo-1700631102725-7194689f7075", 1200)}
-                alt="Two young Fijian men in the Serua highlands"
-                fill
-                sizes="(max-width: 1024px) 100vw, 560px"
-                className="object-cover"
-              />
-            </div>
+                <Image
+                  src="/images/community.webp"
+                  alt="Two young Fijian men in the Serua highlands"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  className="object-cover"
+                />
+              </div>
 
             <div data-anim="reveal">
               <h2 className="h-section">Your savings are working for you</h2>
