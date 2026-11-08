@@ -1,12 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
+/* Body copy, labels, buttons */
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
-  variable: "--font-montserrat",
+  variable: "--font-inter",
+});
+
+/* Headings and large figures */
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +36,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={montserrat.variable}>
+    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
       <body>{children}</body>
     </html>
   );

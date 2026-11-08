@@ -164,7 +164,7 @@ export default function NewMembersPage() {
                 </p>
               </div>
               <div data-anim="band-img" className="relative min-h-[280px] overflow-hidden bg-slate-800 lg:min-h-[360px]">
-                <Image src="/images/laptop.jpg" alt="A woman smiling while using a laptop" fill sizes="(max-width: 1024px) 100vw, 560px" className="object-cover" style={{ objectPosition: "40% 30%" }} />
+                <Image src="/images/newmember.webp" alt="A woman smiling while using a laptop" fill sizes="(max-width: 1024px) 100vw, 560px" className="object-cover" style={{ objectPosition: "40% 30%" }} />
               </div>
             </div>
           </div>

@@ -51,11 +51,11 @@ const slides: Slide[] = [
   },
 ];
 
-/* Retirement options — facts from myfnpf.com.fj (Life Pension, Term Annuity, DrawDown Account pages) */
+/* Retirement options */
 const retirement = [
   {
-    image: unsplash("photo-1758691031787-90867cb6fb2c", 900),
-    alt: "An older couple smiling on a couch",
+    image: "/images/r1.webp",
+    alt: "An older Fijian couple enjoying their retirement together",
     meta: "Monthly, for life",
     title: "Life pension",
     text: "A monthly income for life, for you alone or jointly with your spouse.",
@@ -63,8 +63,8 @@ const retirement = [
     href: `${FNPF}/life-pension/`,
   },
   {
-    image: unsplash("photo-1763573676689-bf2d7b474208", 900),
-    alt: "An older couple laughing together indoors",
+    image: "/images/r2.webp",
+    alt: "An older Fijian couple enjoying time together",
     meta: "Monthly, for 5, 10 or 15 years",
     title: "Term annuity",
     text: "A fixed monthly payment for the term you choose.",
@@ -72,8 +72,8 @@ const retirement = [
     href: `${FNPF}/term-annuity/`,
   },
   {
-    image: unsplash("photo-1758691031818-02a1e7d90aff", 900),
-    alt: "An older couple sitting together on a couch",
+    image: "/images/r3.webp",
+    alt: "An older Fijian person enjoying a comfortable retirement",
     meta: "Monthly, while funds last",
     title: "DrawDown account",
     text: "A flexible monthly income from savings that keep earning interest.",
@@ -82,7 +82,7 @@ const retirement = [
   },
 ];
 
-/* Before applying — from myfnpf.com.fj/plan-your-retirement */
+/* Before applying */
 const checklist = [
   "Confirm your birth details with FNPF",
   "Check your employer has paid all contributions",
@@ -90,7 +90,7 @@ const checklist = [
   "Complete the FW01 Retirement Application Form",
 ];
 
-/* Latest media releases — titles and dates from myfnpf.com.fj/latest-news */
+/* Latest media releases */
 const featured = {
   title: "FNPF Strengthens Long-Term Member Value Through Landmark JW Marriott Fiji Resort & Spa Development",
   date: "30 October 2026",
@@ -118,6 +118,7 @@ export default function MembersPage() {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-2 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2.5">
         Skip to content
       </a>
+
       <Header
         audience="Existing members"
         switchText="New to FNPF? Start here"
@@ -185,6 +186,7 @@ export default function MembersPage() {
                   From age 55, take your savings as a monthly income, a lump sum, or both.
                 </p>
               </div>
+
               <div data-anim="slide-in" className="flex flex-wrap gap-3">
                 <a href="https://pension-calculator.myfnpf.com.fj/" className="btn btn-accent">Estimate your pension</a>
                 <a href={`${FNPF}/plan-your-retirement/`} className="btn btn-outline">Plan your retirement</a>
@@ -202,6 +204,7 @@ export default function MembersPage() {
               <div>
                 <h3 className="text-xl font-semibold tracking-[-0.015em] text-primary lg:text-2xl">Before you apply</h3>
                 <p className="mt-1.5 text-base text-muted-fg">Lump sums are paid within 3 working days of a complete application.</p>
+
                 <div className="mt-5 flex flex-wrap gap-3">
                   <a href={`${FNPF}/wp-content/uploads/2019/09/FW01.pdf`} className="btn btn-accent">
                     <Icon name="download" className="h-5 w-5" />
@@ -210,6 +213,7 @@ export default function MembersPage() {
                   <a href={`${FNPF}/wp-content/uploads/2019/09/Pension-Booklet-1.pdf`} className="btn btn-outline">Pension booklet</a>
                 </div>
               </div>
+
               <ol className="grid gap-3 sm:grid-cols-2">
                 {checklist.map((item, i) => (
                   <li key={item} className="flex items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3.5">
@@ -245,13 +249,17 @@ export default function MembersPage() {
                   sizes="(max-width: 1024px) 100vw, 700px"
                   className="-z-20 bg-slate-800 object-cover transition duration-700 ease-out group-hover:scale-105"
                 />
+
                 <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,0,0,0)_30%,rgba(0,0,0,.75)_100%)]" />
+
                 <p className="text-sm font-medium text-white/80">
                   Media release, <time dateTime={featured.dateTime}>{featured.date}</time>
                 </p>
+
                 <h3 className="mt-2 max-w-[30ch] text-2xl font-semibold leading-[1.2] tracking-[-0.02em] lg:text-[1.75rem]">
                   {featured.title}
                 </h3>
+
                 <span className="mt-4 inline-flex min-h-11 items-center gap-1 text-sm font-semibold">
                   Read the release
                   <Icon name="chevronRight" className="h-[18px] w-[18px] transition duration-200 group-hover:translate-x-1" />
@@ -269,6 +277,7 @@ export default function MembersPage() {
                         </span>
                         <span className="mt-1 block text-base font-semibold leading-snug text-primary">{n.title}</span>
                       </span>
+
                       <Icon name="chevronRight" className="h-[18px] w-[18px] text-muted-fg transition duration-200 group-hover:translate-x-1 group-hover:text-accent" />
                     </a>
                   </li>

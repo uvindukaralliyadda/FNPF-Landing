@@ -4,13 +4,74 @@
 @source "../lib";
 
 /*
- * Design system: "Accessible & Ethical" (ui-ux-pro-max), typeface Montserrat.
- * Type scale (px): 12 14 16 18 20 24 32 40 48 64.
- * Weights: headings 600, labels 500, body 400, large figures 300.
+ * FNPF design system
+ * ------------------------------------------------------------------
+ * Typefaces : Plus Jakarta Sans for headings and figures (--font-display)
+ *             Inter for body copy, labels and buttons (--font-sans)
+ *             Both are loaded in app/layout.tsx with next/font.
+ *
+ * Type scale (rem / px) with matching line-height and tracking:
+ *   xs .75/12 · sm .875/14 · base 1/16 · lg 1.125/18 · xl 1.25/20
+ *   2xl 1.5/24 · 3xl 2/32 · 4xl 2.5/40 · 5xl 3/48 · 6xl 4/64
+ *
+ * Weights:
+ *   Inter   400 body · 500 labels and nav · 600 buttons and emphasis
+ *   Jakarta 600 small headings · 700 section headings · 800 hero display
+ *   Jakarta 300 large figures (stats)
  */
 @theme {
-  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
+  /* Type scale: every size carries its own line-height and tracking */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+  --text-xs--letter-spacing: 0.01em;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.55;
+  --text-sm--letter-spacing: 0;
+  --text-base: 1rem;
+  --text-base--line-height: 1.65;
+  --text-base--letter-spacing: 0;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.6;
+  --text-lg--letter-spacing: -0.005em;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.4;
+  --text-xl--letter-spacing: -0.01em;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.3;
+  --text-2xl--letter-spacing: -0.015em;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 1.18;
+  --text-3xl--letter-spacing: -0.02em;
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 1.12;
+  --text-4xl--letter-spacing: -0.025em;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1.08;
+  --text-5xl--letter-spacing: -0.03em;
+  --text-6xl: 4rem;
+  --text-6xl--line-height: 1.04;
+  --text-6xl--letter-spacing: -0.035em;
+
+  /* Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Tracking */
+  --tracking-display: -0.035em;
+  --tracking-heading: -0.03em;
+  --tracking-tight: -0.015em;
+  --tracking-label: 0.01em;
+  --tracking-caps: 0.06em;
+
+  /* Colours */
   --color-primary: #0F172A;
   --color-secondary: #334155;
   --color-accent: #0369A1;
@@ -23,24 +84,42 @@
   --color-line: #E2E8F0;
   --color-brand: #C8102E;
 
+  /* Layout, radius, motion, shadow */
   --container-wrap: 1200px;
   --radius-4xl: 28px;
-  --tracking-display: -0.035em;
-  --tracking-heading: -0.03em;
   --ease-out: cubic-bezier(.22, 1, .36, 1);
-
   --shadow-card: 0 1px 2px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.06);
   --shadow-lift: 0 24px 60px rgba(15,23,42,.18);
   --shadow-footer: 0 30px 80px rgba(15,23,42,.12);
 }
 
 @layer base {
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    @apply bg-surface font-sans text-base font-normal leading-[1.65] text-ink antialiased;
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3 { text-wrap: balance; }
+  body {
+    @apply bg-surface font-sans text-base font-normal text-ink antialiased;
+    font-feature-settings: "kern", "liga", "calt", "cv11";
+    font-optical-sizing: auto;
+  }
+
+  /* Headings use Plus Jakarta Sans everywhere; size and weight utilities still win */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+  }
   p { text-wrap: pretty; }
+  strong, b { font-weight: var(--font-weight-semibold); }
+
+  /* Large figures (stat counters) in Jakarta with even-width digits */
+  [data-count] {
+    font-family: var(--font-display);
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
   [id] { scroll-margin-top: 120px; }
   :focus-visible { outline: 3px solid #0369A1; outline-offset: 3px; border-radius: 6px; }
 }
@@ -48,17 +127,33 @@
 @layer components {
   .wrap { @apply mx-auto w-full max-w-wrap px-5 sm:px-6; }
 
-  /* Buttons */
+  /* ---------- Type styles ---------- */
+  /* Hero / split-page display */
+  .t-display { @apply font-display text-[2.5rem] font-extrabold leading-[1.04] tracking-display md:text-5xl lg:text-6xl; }
+  /* Page section heading */
+  .h-section, .t-h2 { @apply font-display text-3xl font-bold tracking-heading text-primary md:text-4xl lg:text-5xl; }
+  /* Sub-section heading */
+  .t-h3 { @apply font-display text-2xl font-bold text-primary lg:text-3xl; }
+  /* Card heading */
+  .t-h4 { @apply font-display text-xl font-semibold text-primary; }
+  /* Intro paragraph under a heading */
+  .t-lead { @apply text-lg font-normal text-muted-fg; }
+  /* Body and small text */
+  .t-body { @apply text-base font-normal text-secondary; }
+  .t-small { @apply text-sm font-normal text-muted-fg; }
+  /* Labels, meta lines, dates */
+  .t-label { @apply text-xs font-semibold tracking-label text-accent; }
+  /* Large statistic figure */
+  .t-figure { @apply font-display text-[2.5rem] font-light leading-none tracking-[-0.04em] text-primary tabular-nums lg:text-5xl; }
+
+  /* ---------- Buttons ---------- */
   .btn {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-transparent px-6 text-sm font-semibold tracking-[0.01em] no-underline transition duration-200 active:scale-[.98];
+    @apply inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-transparent px-6 font-sans text-sm font-semibold tracking-label no-underline transition duration-200 active:scale-[.98];
   }
   .btn-accent { @apply bg-accent text-white hover:bg-accent-hover; }
   .btn-white { @apply bg-white text-primary hover:bg-accent-tint; }
   .btn-ghost { @apply border-white/70 text-white hover:border-white hover:bg-white/10; }
   .btn-outline { @apply border-line bg-white text-primary hover:border-primary; }
-
-  /* Section heading */
-  .h-section { @apply text-[2rem] font-semibold leading-[1.08] tracking-heading text-primary md:text-[2.5rem] lg:text-5xl; }
 }
 
 /* ---------- Split landing page: curved seam echoing the FNPF leaf ---------- */
