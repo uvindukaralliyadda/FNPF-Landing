@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 const slides: Slide[] = [
   {
-    image: "/images/laptop.jpg",
-    position: "70% 30%",
+    image: "/images/hero1.webp",
+    position: "50% 35%",
     title: "Your savings, your services",
     text: "Manage your account online, anytime.",
     ctas: [
@@ -27,20 +27,21 @@ const slides: Slide[] = [
     ],
   },
   {
-    image: unsplash("photo-1607013407627-6ee814329547"),
+    image: "/images/hero2.webp",
     position: "50% 35%",
     title: "Education support for your family",
     text: "Local applications processed in 3 working days.",
     ctas: [{ label: "Apply for education", href: "#", variant: "accent" }],
   },
   {
-    image: unsplash("photo-1709787627975-9cb37bbeca60"),
+    image: "/images/hero3.webp",
+    position: "50% 40%",
     title: "Build or buy your home",
     text: "Use your savings for land, a house or a home loan.",
     ctas: [{ label: "Housing withdrawals", href: "#", variant: "accent" }],
   },
   {
-    image: unsplash("photo-1761839257647-df30867afd54"),
+    image: "/images/hero4.webp",
     position: "50% 40%",
     title: "Plan your retirement income",
     text: "Choose a pension, annuity or drawdown account.",
