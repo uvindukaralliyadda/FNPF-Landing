@@ -152,7 +152,7 @@ export default function MembersPage() {
           <div className="wrap grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
             <div data-anim="frame" className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-muted lg:aspect-[4/5]">
                 <Image
-                  src="/images/community.webp"
+                  src="/images/graduate.webp"
                   alt="Two young Fijian men in the Serua highlands"
                   fill
                   sizes="(max-width: 1024px) 100vw, 560px"
