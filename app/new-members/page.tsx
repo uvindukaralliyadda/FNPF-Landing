@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const slides: Slide[] = [
   {
-    image: unsplash("photo-1663889442870-c13c86358ae0"),
+    image: "/images/nmh1.webp",
     position: "60% 30%",
     title: "Start saving for your future",
     text: "Join Fiji's national retirement fund.",
@@ -27,18 +27,22 @@ const slides: Slide[] = [
     ],
   },
   {
-    image: pexels(1897503),
+    image: "/images/nmh2.webp",
     position: "65% 30%",
     title: "Self-employed? Save on your terms",
     text: "Open a voluntary account from just $10.",
-    ctas: [{ label: "Join as a voluntary member", href: "#join", variant: "accent" }],
+    ctas: [
+      { label: "Join as a voluntary member", href: "#join", variant: "accent" },
+    ],
   },
   {
-    image: unsplash("photo-1663889974474-16058fe6fede"),
+    image: "/images/nmh3.webp",
     position: "50% 40%",
     title: "Give your child a head start",
     text: "Parents can open savings for children under 18.",
-    ctas: [{ label: "Register your child", href: "#join", variant: "accent" }],
+    ctas: [
+      { label: "Register your child", href: "#join", variant: "accent" },
+    ],
   },
 ];
 
@@ -86,7 +90,7 @@ export default function NewMembersPage() {
             <div className="relative">
               <div data-anim="frame" className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-muted lg:aspect-[4/5]">
                 <Image
-                  src={unsplash("photo-1701047018936-fe557ef2c98a", 1200)}
+                  src="/images/mother.webp"
                   alt="A mother sitting on a bench holding her young child"
                   fill
                   sizes="(max-width: 1024px) 100vw, 560px"

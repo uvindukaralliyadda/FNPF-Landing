@@ -19,7 +19,7 @@ const FNPF = "https://myfnpf.com.fj";
 
 const slides: Slide[] = [
   {
-    image: "/images/hero1.webp",
+    image: "/images/heru.webp",
     position: "50% 35%",
     title: "Your savings, your services",
     text: "Manage your account online, anytime.",
