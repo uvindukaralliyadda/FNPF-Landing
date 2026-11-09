@@ -7,16 +7,19 @@ import { SplitIntro } from "@/components/SplitIntro";
 /*  Shared styles                                                      */
 /* ------------------------------------------------------------------ */
 
-/* Both panels use the exact same content stack so heading, lead,
-   CTA and links line up horizontally across the split.
-   Desktop overrides reset any offsets from global CSS so the content
-   sits dead-centre in each half. */
+/* Desktop: content fills the full height of each half.
+   Heading + lead sit at the top, CTA + links sit at the bottom,
+   leaving the centre of the photo (the people) clear. */
 const inner =
-  "flex flex-col items-center min-[900px]:!m-0 min-[900px]:!p-0 min-[900px]:![transform:none] min-[900px]:!w-auto min-[900px]:!max-w-none";
+  "flex flex-col items-center min-[900px]:!m-0 min-[900px]:![transform:none] min-[900px]:!w-full min-[900px]:!max-w-none min-[900px]:!h-full min-[900px]:justify-between min-[900px]:!px-6 min-[900px]:!pt-[14vh] min-[900px]:!pb-[9vh]";
 
 /* Desktop: each panel is exactly half the screen, no clip-path. */
 const half =
   "min-[900px]:!w-1/2 min-[900px]:![clip-path:none] min-[900px]:justify-center";
+
+/* Groups inside each panel */
+const topGroup = "flex flex-col items-center";
+const bottomGroup = "flex flex-col items-center";
 
 /* Desktop: heading stays on ONE line on both sides. */
 const heading =
@@ -27,7 +30,7 @@ const lead =
   "sp-lead mt-3 max-w-[32ch] text-sm leading-[1.55] text-white [text-shadow:0_1px_12px_rgba(0,0,0,.55),0_1px_2px_rgba(0,0,0,.4)] min-[900px]:mt-5 min-[900px]:min-h-[3.2em] min-[900px]:text-lg min-[900px]:leading-[1.6]";
 
 const ctaButton =
-  "btn btn-white mt-6 w-[230px] justify-center min-[900px]:mt-8";
+  "btn btn-white mt-6 w-[230px] justify-center min-[900px]:mt-0";
 
 const linkRow =
   "mt-6 flex w-max max-w-full flex-wrap justify-center gap-x-6 border-t border-white/30 pt-4 text-sm font-medium max-[899px]:hidden";
@@ -39,9 +42,10 @@ const link =
 const vignette =
   "pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(130%_100%_at_50%_45%,rgba(0,0,0,0)_55%,rgba(0,0,0,.30)_100%),linear-gradient(180deg,rgba(0,0,0,.12)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,.32)_100%)]";
 
-/* Soft shade behind text, centred in each half on desktop */
+/* Soft shade behind text.
+   Desktop: one shade behind the top text, one behind the bottom CTA. */
 const textShade =
-  "pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_35%_at_50%_45%,rgba(0,0,0,.30)_0%,rgba(0,0,0,0)_100%)] min-[900px]:bg-[radial-gradient(60%_40%_at_50%_50%,rgba(0,0,0,.30)_0%,rgba(0,0,0,0)_100%)]";
+  "pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_35%_at_50%_45%,rgba(0,0,0,.30)_0%,rgba(0,0,0,0)_100%)] min-[900px]:bg-[radial-gradient(60%_28%_at_50%_24%,rgba(0,0,0,.38)_0%,rgba(0,0,0,0)_100%),radial-gradient(55%_22%_at_50%_86%,rgba(0,0,0,.34)_0%,rgba(0,0,0,0)_100%)]";
 
 /* Theme gradients
    New members  → accent blue (#0369A1)
@@ -69,31 +73,37 @@ type PanelContentProps = {
 function PanelContent({ id, title, text, cta, links }: PanelContentProps) {
   return (
     <>
-      <h2 id={id} className={heading}>
-        {title}
-      </h2>
+      {/* Top: heading + lead */}
+      <div className={topGroup}>
+        <h2 id={id} className={heading}>
+          {title}
+        </h2>
 
-      <p className={lead}>{text}</p>
+        <p className={lead}>{text}</p>
+      </div>
 
-      <Link href={cta.href} className={ctaButton}>
-        {cta.label}
-      </Link>
+      {/* Bottom: CTA + links */}
+      <div className={bottomGroup}>
+        <Link href={cta.href} className={ctaButton}>
+          {cta.label}
+        </Link>
 
-      <ul className={linkRow}>
-        {links.map((item) => (
-          <li key={item.label}>
-            {item.external ? (
-              <a href={item.href} className={link}>
-                {item.label}
-              </a>
-            ) : (
-              <Link href={item.href} className={link}>
-                {item.label}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
+        <ul className={linkRow}>
+          {links.map((item) => (
+            <li key={item.label}>
+              {item.external ? (
+                <a href={item.href} className={link}>
+                  {item.label}
+                </a>
+              ) : (
+                <Link href={item.href} className={link}>
+                  {item.label}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
